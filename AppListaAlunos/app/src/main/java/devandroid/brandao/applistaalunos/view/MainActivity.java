@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         dadosOutraPessoa += " Telefone de Contato: ";
         dadosOutraPessoa += outrapessoa.getTelefoneContato();
 
-        int parada = 0;
+
     }
 
 
