@@ -22,8 +22,11 @@ public class PessoaController {
 
     }
 
-
-
+    @NonNull
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 
     public void salvar(Pessoa pessoa) {
 
