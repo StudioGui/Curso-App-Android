@@ -45,26 +45,24 @@ public class MainActivity extends AppCompatActivity {
         controller.toString();
 
         pessoa = new Pessoa();
-        outrapessoa = new Pessoa();
-
-        outrapessoa.setPrimeiroNome("Solange");
-        outrapessoa.setSobreNome("Valenzuela");
-        outrapessoa.setCursoDesejado("Java");
-        outrapessoa.setTelefoneContato("1188888888");
+        pessoa.setPrimeiroNome(preferences.getString("primeiroNome",""));
+        pessoa.setSobreNome(preferences.getString("sobreNome",""));
+        pessoa.setCursoDesejado(preferences.getString("nomeCurso",""));
+        pessoa.setTelefoneContato(preferences.getString("telefoneContato",""));
 
         editPrimeiroNome = findViewById(R.id.editPrimeiroNome);
         editSobrenome = findViewById(R.id.editSobrenome);
         editNomeCurso = findViewById(R.id.editNomeCurso);
         editTelefoneContato = findViewById(R.id.editTelefoneContato);
 
-        btnLimpar = findViewById(R.id.btnLimpar);
-        btnSalvar = findViewById(R.id.btnSalvar);
-        btnFinalizar = findViewById(R.id.btnFinalizar);
-
         editPrimeiroNome.setText(pessoa.getPrimeiroNome());
         editSobrenome.setText(pessoa.getSobreNome());
         editNomeCurso.setText(pessoa.getCursoDesejado());
         editTelefoneContato.setText(pessoa.getTelefoneContato());
+
+        btnLimpar = findViewById(R.id.btnLimpar);
+        btnSalvar = findViewById(R.id.btnSalvar);
+        btnFinalizar = findViewById(R.id.btnFinalizar);
 
         btnLimpar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,6 +103,5 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Log.i("POOAndroid", pessoa.toString());
-        Log.i("POOAndroid", outrapessoa.toString());
     }
 }
