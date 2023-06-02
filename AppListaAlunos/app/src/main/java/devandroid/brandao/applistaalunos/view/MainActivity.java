@@ -9,15 +9,21 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.List;
+
 import devandroid.brandao.applistaalunos.R;
+import devandroid.brandao.applistaalunos.controller.CursoController;
 import devandroid.brandao.applistaalunos.controller.PessoaController;
+import devandroid.brandao.applistaalunos.model.Curso;
 import devandroid.brandao.applistaalunos.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
 
     PessoaController controller;
+    CursoController cursoController;
 
     Pessoa pessoa;
+    List<Curso> listaDeCursos;
 
     EditText editPrimeiroNome;
     EditText editSobrenome;
@@ -35,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
 
         controller = new PessoaController(MainActivity.this);
         controller.toString();
+
+        cursoController = new CursoController();
+        listaDeCursos = cursoController.getListadeCursos();
 
         pessoa = new Pessoa();
         controller.buscar(pessoa);
