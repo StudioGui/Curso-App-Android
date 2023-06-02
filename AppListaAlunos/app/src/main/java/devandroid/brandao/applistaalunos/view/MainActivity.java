@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_spinner);
 
         controller = new PessoaController(MainActivity.this);
         controller.toString();
@@ -66,18 +66,11 @@ public class MainActivity extends AppCompatActivity {
         btnSalvar = findViewById(R.id.btnSalvar);
         btnFinalizar = findViewById(R.id.btnFinalizar);
 
-        //adapter
-
-        //layout
-
-        //Injetar o adapter
-
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, cursoController.dadosParaSpinner());
 
         adapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
 
         spinner.setAdapter(adapter);
-
 
 
         btnLimpar.setOnClickListener(new View.OnClickListener() {
