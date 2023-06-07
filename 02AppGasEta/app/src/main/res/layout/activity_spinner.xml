@@ -49,8 +49,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:ems="10"
-                android:hint="@string/txt_hint_edit_sobrenome"
-                android:importantForAutofill="no"
+                android:hint="@string/txt_hint_edit_etanol"              android:importantForAutofill="no"
                 android:inputType="text" />
 
             <EditText
