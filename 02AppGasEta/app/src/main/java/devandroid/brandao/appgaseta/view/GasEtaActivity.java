@@ -1,6 +1,5 @@
 package devandroid.brandao.appgaseta.view;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -14,9 +13,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import devandroid.brandao.appgaseta.R;
 import devandroid.brandao.appgaseta.apoio.UtilGasEta;
+import devandroid.brandao.appgaseta.controller.CombustivelController;
 import devandroid.brandao.appgaseta.model.Combustivel;
 
 public class GasEtaActivity extends AppCompatActivity {
+
+    CombustivelController controller;
 
     Combustivel combustivelGasolina;
     Combustivel combustivelEtanol;
@@ -77,9 +79,12 @@ public class GasEtaActivity extends AppCompatActivity {
                 resolucao = UtilGasEta.calcularMelhorOpcao(precoGasolina,precoEtanol);
                 txtResultado.setText(resolucao);
 
+                btnSalvar.setEnabled(true);
+
             }
             else{
             Toast.makeText(GasEtaActivity.this, "Digite os campos obrigatórios",Toast.LENGTH_LONG).show();
+                btnSalvar.setEnabled(false);
             }
 
             }
@@ -89,7 +94,7 @@ public class GasEtaActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //TODO: Desabilitar o Botão Salvar
+                controller = new CombustivelController(GasEtaActivity.this);
 
                 combustivelEtanol = new Combustivel();
                 combustivelGasolina = new Combustivel();
@@ -103,6 +108,11 @@ public class GasEtaActivity extends AppCompatActivity {
                 combustivelGasolina.setResolucao(UtilGasEta.calcularMelhorOpcao(precoGasolina, precoEtanol));
                 combustivelEtanol.setResolucao(UtilGasEta.calcularMelhorOpcao(precoGasolina, precoEtanol));
 
+                controller.Salvar(combustivelGasolina);
+                controller.Salvar(combustivelEtanol);
+
+
+
             }
         });
 
@@ -111,6 +121,8 @@ public class GasEtaActivity extends AppCompatActivity {
             public void onClick(View v) {
                 editEtanol.setText("");
                 editGasolina.setText("");
+                txtResultado.setText("RESULTADO");
+                btnSalvar.setEnabled(false);
             }
         });
 
